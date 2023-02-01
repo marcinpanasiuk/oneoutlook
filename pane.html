@@ -42,8 +42,7 @@
 
         // Removes custom internet header
         function removeSelectedCustomHeaders() {
-            Office.context.mailbox.item.internetHeaders.setAsync(
-                {"x-custom-header": "test"}, function(asyncResult) {
+            Office.context.mailbox.item.internetHeaders.removeAsync(["x-custom-header"], function(asyncResult) {
                     if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
                         console.log("Successfully removed selected header");
                         Office.context.mailbox.item.notificationMessages.replaceAsync("message", {
