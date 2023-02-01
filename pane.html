@@ -30,7 +30,7 @@
           <section class="samples ms-font-m">
             <h3>Try it out</h3>
             <button id="remove-selected-custom-headers" class="ms-Button">
-              <span class="ms-Button-label">Remove selected custom headers</span>
+              <span class="ms-Button-label">Remove x-custom-header</span>
             </button>
           </section>
     </body>
@@ -45,9 +45,15 @@
             Office.context.mailbox.item.internetHeaders.setAsync(
                 {"x-custom-header": "test"}, function(asyncResult) {
                     if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
-                    console.log("Successfully removed selected header");
+                        console.log("Successfully removed selected header");
+                        Office.context.mailbox.item.notificationMessages.replaceAsync("message", {
+                            type: Office.MailboxEnums.ItemNotificationMessageType.InsightMessage,
+                            actions: [{ actionText: 'Open add-in pane', actionType: 'showTaskPane', commandId: 'paneButton', contextData: '' }],
+                            message: 'Successfully removed x-custom-header from pane ',
+                            icon: 'icon16'
+                        });
                     } else {
-                    console.log("Error removing selected header: " + JSON.stringify(asyncResult.error));
+                        console.log("Error removing selected header: " + JSON.stringify(asyncResult.error));
                     }
                 });
         }
