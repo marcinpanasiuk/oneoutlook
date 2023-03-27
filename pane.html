@@ -45,12 +45,12 @@
             Office.context.mailbox.item.internetHeaders.removeAsync(["x-custom-header"], function(asyncResult) {
                     if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
                         console.log("Successfully removed selected header");
-                        Office.context.mailbox.item.notificationMessages.replaceAsync("message", {
-                            type: Office.MailboxEnums.ItemNotificationMessageType.InsightMessage,
-                            actions: [{ actionText: 'Open add-in pane', actionType: 'showTaskPane', commandId: 'paneButton', contextData: '' }],
-                            message: 'Successfully removed x-custom-header from pane ',
-                            icon: 'icon16'
-                        });
+                        //Office.context.mailbox.item.notificationMessages.replaceAsync("message", {
+                        //    type: Office.MailboxEnums.ItemNotificationMessageType.InsightMessage,
+                        //    actions: [{ actionText: 'Open add-in pane', actionType: 'showTaskPane', commandId: 'paneButton', contextData: '' }],
+                        //    message: 'Successfully removed x-custom-header from pane ',
+                        //    icon: 'icon16'
+                        //});
                     } else {
                         console.log("Error removing selected header: " + JSON.stringify(asyncResult.error));
                     }
